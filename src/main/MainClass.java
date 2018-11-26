@@ -1,21 +1,16 @@
 package main;
 
-import algorithm.EnumSort;
-import algorithm.MergeSort;
-import algorithm.QuickSortParallelTask;
-import algorithm.Quicksort;
+import algorithm.*;
 import utility.Stopwatch;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.Vector;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.Future;
 
 public class MainClass {
@@ -75,71 +70,82 @@ public class MainClass {
             /**
              * QuickSort (Parallel)
              */
-            final ExecutorService executorService = Executors.newFixedThreadPool(10);
-            List<Future> futures = new Vector<>();
             double beforeQsp = stopwatch.elapsedTime();
-            futures.add(executorService.submit(new QuickSortParallelTask(data, 0, data.length - 1, executorService, futures, 2000)));
+            List<Future> futures = new Vector<>();
+            ExecutorService executorService = Executors.newFixedThreadPool(8);
+            QuickSortParallelTask mainQspTask = new QuickSortParallelTask(data, 0, data.length - 1, executorService, futures, 1000);
+            futures.add(executorService.submit(mainQspTask));
             while (!futures.isEmpty()){
                 Future topFuture = futures.remove(0);
                 try{
-                    if (topFuture != null)
-                        topFuture.get();
+                    topFuture.get();
                 }catch (Exception e){
                     e.printStackTrace();
                 }
             }
-            //executorService.shutdown();
+            executorService.shutdown();
             double afterQsp = stopwatch.elapsedTime();
             assertSort(data);
             outputToTxt(4, data);
             System.arraycopy(raw_data, 0, data, 0, raw_data.length);
 
             /**
-             * The test of threshold of QuickSort in parallel mode
-             *//*
-            int bestThreshold = 0;
-            double bestRunningTime = 100.0;
-            for (int threshold = 0; threshold <= 3000; threshold += 500){
-                double beforeTest = stopwatch.elapsedTime();
-                futures.add(executorService.submit(new QuickSortParallelTask(data, 0, data.length - 1, executorService, futures, threshold)));
-                while (!futures.isEmpty()){
-                    Future topFuture = futures.remove(0);
-                    try{
-                        if (topFuture != null)
-                            topFuture.get();
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
-                //executorService.shutdown();
-                double afterTest = stopwatch.elapsedTime();
-                assertSort(data);
-                System.arraycopy(raw_data, 0, data, 0, raw_data.length);
-                System.out.print("threshold: " + threshold + ";  ");
-                System.out.println("running time: " + String.format("%.4f", afterTest - beforeTest) + "s");
-                if (afterTest - beforeTest < bestRunningTime) {
-                    bestThreshold = threshold;
-                    bestRunningTime = afterTest - beforeTest;
-                }
+             * MergeSort (Parallel) with naive Thread start/join
+             */
+            double beforeMsp = stopwatch.elapsedTime();
+            Thread mspThread = new Thread(new MergeSortParallelTask(data, 0, data.length - 1, 500));
+            mspThread.start();
+            try{
+                mspThread.join();
+            }catch (InterruptedException e){
+                e.printStackTrace();
             }
-            executorService.shutdown();
-            System.out.println("Best threshold: " + bestThreshold);
-            System.out.println("Best running time: " + String.format("%.4f", bestRunningTime) + "s");
-            */
+            double afterMsp = stopwatch.elapsedTime();
+            assertSort(data);
+            outputToTxt(5, data);
+            System.arraycopy(raw_data, 0, data, 0, raw_data.length);
 
+            /**
+             * MergeSort (Parallel) extended from RecursiveAction
+             */
+            double beforeMsp2 = stopwatch.elapsedTime();
+            final ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors() - 1);
+            forkJoinPool.invoke(new MergeSortParallelTask2(data, 0, data.length - 1));
+            double afterMsp2 = stopwatch.elapsedTime();
+            assertSort(data);
+            System.arraycopy(raw_data, 0, data, 0, raw_data.length);
+
+            /**
+             * EnumSort (Parallel) extended from RecursiveAction
+             */
+            double beforeEsp = stopwatch.elapsedTime();
+            int[] resultEsp = new int[4000];
+            final ForkJoinPool forkJoinPool1 = new ForkJoinPool(Runtime.getRuntime().availableProcessors() - 1);
+            forkJoinPool1.invoke(new EnumSortParallelTask(data, resultEsp, 0, data.length - 1, -1));
+            double afterEsp = stopwatch.elapsedTime();
+            assertSort(resultEsp);
+            System.arraycopy(raw_data, 0, data, 0, raw_data.length);
+
+
+            /**
+             * Time consumed
+             */
             System.out.println("QuickSort takes " + String.format("%.4f", (afterQs - beforeQs)) + "s");
             System.out.println("EnumSort takes " + String.format("%.4f", (afterEs - beforeEs)) + "s");
             System.out.println("MergeSort takes " + String.format("%.4f", (afterMs - beforeMs)) + "s");
             System.out.println("QuickSortParallel takes " + String.format("%.4f", (afterQsp - beforeQsp)) + "s");
-
+            System.out.println("MergeSortParallel takes " + String.format("%.4f", (afterMsp - beforeMsp)) + "s");
+            System.out.println("MergeSortParallel2 takes " + String.format("%.4f", (afterMsp2 - beforeMsp2)) + "s");
+            System.out.println("EnumSortParallel takes " + String.format("%.4f", (afterEsp - beforeEsp)) + "s");
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
     private static void assertSort(int[] arr){
-        for (int i = 1; i < arr.length; i++)
+        for (int i = 1; i < arr.length; i++){
             assert arr[i - 1] <= arr[i];
+        }
     }
 
     private static void outputToTxt(int id, int[] arr){

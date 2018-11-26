@@ -1,9 +1,5 @@
 package algorithm;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-
 public class EnumSort {
     private int[] data;
     public int[] result;

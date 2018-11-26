@@ -1,7 +1,6 @@
 package algorithm;
 
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
@@ -11,19 +10,18 @@ public class QuickSortParallelTask implements Runnable{
     private int begin = 0;
     private int end = 0;
     private ExecutorService executorService;
-    private List<Future>future;
-    private Random random = new Random();
+    private List<Future> futures;
 
-    public QuickSortParallelTask(int[] arr, int begin, int end, ExecutorService executorService, List<Future>future){
+    public QuickSortParallelTask(int[] arr, int begin, int end, ExecutorService executorService, List<Future> futures){
         this.data = arr;
         this.begin = begin;
         this.end = end;
         this.executorService = executorService;
-        this.future = future;
+        this.futures = futures;
     }
 
-    public QuickSortParallelTask(int[] arr, int begin, int end, ExecutorService executorService, List<Future>future, int threshold){
-        this(arr, begin, end, executorService, future);
+    public QuickSortParallelTask(int[] arr, int begin, int end, ExecutorService executorService, List<Future> futures, int threshold){
+        this(arr, begin, end, executorService, futures);
         this.threshold = threshold;
     }
 
@@ -33,6 +31,8 @@ public class QuickSortParallelTask implements Runnable{
     }
 
     private void sort(int[] arr, int left, int right){
+        if (left >= right)
+            return;
         int pivot = left;
         int key = arr[pivot];
         int l = left;
@@ -45,29 +45,29 @@ public class QuickSortParallelTask implements Runnable{
                 l++;
                 while(arr[l] < key && l < r)
                     l++;
-                if(l < r)
-                {
+                if(l < r) {
                     arr[r] = arr[l];
                     r--;
                 }
             }
         }
         arr[l] = key;
+
         if (l - left > 1){
-            if (l - left > threshold) {
-                //System.out.println("New Runnable added.");
-                future.add(executorService.submit(new QuickSortParallelTask(arr, left, l - 1, executorService, future, threshold)));
+            if (l - left > threshold){
+                futures.add(executorService.submit(new QuickSortParallelTask(arr, left, l - 1, executorService, futures, threshold)));
             }
-            else
+            else{
                 sort(arr, left, l - 1);
+            }
         }
         if (right - l > 1){
-            if (right - l > threshold) {
-                //System.out.println("New Runnable added.");
-                future.add(executorService.submit(new QuickSortParallelTask(arr, l + 1, right, executorService, future, threshold)));
+            if (right - l > threshold){
+                futures.add(executorService.submit(new QuickSortParallelTask(arr, l + 1, right, executorService, futures)));
             }
-            else
+            else{
                 sort(arr, l + 1, right);
+            }
         }
     }
 }

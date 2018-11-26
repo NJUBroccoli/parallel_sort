@@ -1,8 +1,5 @@
 package algorithm;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
 import java.util.Random;
 
 public class Quicksort {
