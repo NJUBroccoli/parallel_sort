@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9879d49c-3ae8-4d66-98e7-93ee3cb22bb7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/algorithm/EnumSortParallelTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/algorithm/MergeSortParallelTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/algorithm/MergeSortParallelTask2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/algorithm/QuickSortParallelTask2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sort/algorithm/EnumSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sort/algorithm/EnumSort.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sort/algorithm/MergeSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sort/algorithm/MergeSort.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sort/algorithm/MergeSortParallelTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sort/algorithm/MergeSortParallelTask.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/sort/algorithm/QuickSortParallelTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sort/algorithm/QuickSortParallelTask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/sort/algorithm/Quicksort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sort/algorithm/Quicksort.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/sort/main/MainClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/sort/main/MainClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithm/QuickSortParallelTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithm/QuickSortParallelTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainClass.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,8 +25,8 @@
       <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="168" column="109" selection-start-line="168" selection-start-column="109" selection-end-line="168" selection-end-column="109" />
+            <state relative-caret-position="233">
+              <caret line="153" column="32" lean-forward="true" selection-start-line="153" selection-start-column="32" selection-end-line="153" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -34,32 +34,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EnumSortParallelTask.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algorithm/EnumSortParallelTask.java">
+      <file leaf-file-name="QuickSortParallelTask2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algorithm/QuickSortParallelTask2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+            <state relative-caret-position="318">
+              <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#595#596#0" expanded="true" />
+                <element signature="e#633#634#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MergeSortParallelTask2.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algorithm/MergeSortParallelTask2.java">
+      <file leaf-file-name="QuickSortParallelTask.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/algorithm/QuickSortParallelTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EnumSort.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/algorithm/EnumSort.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+            <state relative-caret-position="660">
+              <caret line="57" column="23" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,13 +78,14 @@
         <option value="$PROJECT_DIR$/src/utility/Stopwatch.java" />
         <option value="$PROJECT_DIR$/src/algorithm/SortTask.java" />
         <option value="$PROJECT_DIR$/src/algorithm/QuickSortParallel.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/Quicksort.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/MergeSort.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/EnumSort.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/MergeSortParallelTask.java" />
-        <option value="$PROJECT_DIR$/src/algorithm/QuickSortParallelTask.java" />
         <option value="$PROJECT_DIR$/src/algorithm/MergeSortParallelTask2.java" />
         <option value="$PROJECT_DIR$/src/algorithm/EnumSortParallelTask.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/EnumSort.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/MergeSort.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/MergeSortParallelTask.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/Quicksort.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/QuickSortParallelTask.java" />
+        <option value="$PROJECT_DIR$/src/algorithm/QuickSortParallelTask2.java" />
         <option value="$PROJECT_DIR$/src/main/MainClass.java" />
       </list>
     </option>
@@ -245,17 +239,18 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32689655" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26344827" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26344827" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32965517" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2980614" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2980614" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -269,7 +264,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32965517" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32689655" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
@@ -309,12 +303,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/algorithm/Quicksort.java</url>
-          <line>19</line>
+          <line>16</line>
           <properties />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/MainClass.java</url>
-          <line>88</line>
+          <line>87</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -337,9 +331,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -364,9 +355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -404,9 +392,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -424,9 +409,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -457,22 +439,10 @@
         <state relative-caret-position="-9598" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/order3.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6370" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/order1.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret column="144" selection-start-column="144" selection-end-column="144" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility/Stopwatch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -485,84 +455,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility/Stopwatch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/MergeSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#184#185#0" expanded="true" />
             <element signature="e#210#211#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/order4.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2307" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/QuickSortParallelTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="62" column="13" lean-forward="true" selection-start-line="62" selection-start-column="13" selection-end-line="62" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/MergeSortParallelTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="49" column="36" selection-start-line="47" selection-start-column="12" selection-end-line="49" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/Quicksort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/MergeSortParallelTask2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/algorithm/EnumSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/MergeSortParallelTask2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/order6.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret column="15434" selection-start-column="15434" selection-end-column="15434" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/order5.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret column="15545" selection-start-column="15545" selection-end-column="15545" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/order3.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2098" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/EnumSortParallelTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/algorithm/EnumSortParallelTask.java">
+    <entry file="file://$PROJECT_DIR$/src/algorithm/QuickSortParallelTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+        <state relative-caret-position="660">
+          <caret line="57" column="23" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/order4.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret column="15315" lean-forward="true" selection-start-column="15315" selection-end-column="15315" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/algorithm/QuickSortParallelTask2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#595#596#0" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/MainClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="168" column="109" selection-start-line="168" selection-start-column="109" selection-end-line="168" selection-end-column="109" />
+        <state relative-caret-position="233">
+          <caret line="153" column="32" lean-forward="true" selection-start-line="153" selection-start-column="32" selection-end-line="153" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

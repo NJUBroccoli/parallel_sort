@@ -68,11 +68,11 @@ public class MainClass {
             System.arraycopy(raw_data, 0, data, 0, raw_data.length);
 
             /**
-             * QuickSort (Parallel)
+             * QuickSort (Parallel) implemented with ExecutorService and Future List
              */
             double beforeQsp = stopwatch.elapsedTime();
             List<Future> futures = new Vector<>();
-            ExecutorService executorService = Executors.newFixedThreadPool(8);
+            ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
             QuickSortParallelTask mainQspTask = new QuickSortParallelTask(data, 0, data.length - 1, executorService, futures, 1000);
             futures.add(executorService.submit(mainQspTask));
             while (!futures.isEmpty()){
@@ -86,11 +86,22 @@ public class MainClass {
             executorService.shutdown();
             double afterQsp = stopwatch.elapsedTime();
             assertSort(data);
+//            outputToTxt(4, data);
+            System.arraycopy(raw_data, 0, data, 0, raw_data.length);
+
+            /**
+             * QuickSort (Parallel) implemented with RecursiveAction and ForkJoinPool
+             */
+            double beforeQsp2 = stopwatch.elapsedTime();
+            final ForkJoinPool forkJoinPoolQsp = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
+            forkJoinPoolQsp.invoke(new QuickSortParallelTask2(data, 0, data.length - 1, 3000));
+            double afterQsp2 = stopwatch.elapsedTime();
+            assertSort(data);
             outputToTxt(4, data);
             System.arraycopy(raw_data, 0, data, 0, raw_data.length);
 
             /**
-             * MergeSort (Parallel) with naive Thread start/join
+             * MergeSort (Parallel) implemented with naive Thread start/join
              */
             double beforeMsp = stopwatch.elapsedTime();
             Thread mspThread = new Thread(new MergeSortParallelTask(data, 0, data.length - 1, 500));
@@ -102,28 +113,29 @@ public class MainClass {
             }
             double afterMsp = stopwatch.elapsedTime();
             assertSort(data);
+            System.arraycopy(raw_data, 0, data, 0, raw_data.length);
+
+            /**
+             * MergeSort (Parallel) implemented with RecursiveAction and ForkJoinPool
+             */
+            double beforeMsp2 = stopwatch.elapsedTime();
+            final ForkJoinPool forkJoinPoolMsp = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
+            forkJoinPoolMsp.invoke(new MergeSortParallelTask2(data, 0, data.length - 1));
+            double afterMsp2 = stopwatch.elapsedTime();
+            assertSort(data);
             outputToTxt(5, data);
             System.arraycopy(raw_data, 0, data, 0, raw_data.length);
 
             /**
-             * MergeSort (Parallel) extended from RecursiveAction
-             */
-            double beforeMsp2 = stopwatch.elapsedTime();
-            final ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors() - 1);
-            forkJoinPool.invoke(new MergeSortParallelTask2(data, 0, data.length - 1));
-            double afterMsp2 = stopwatch.elapsedTime();
-            assertSort(data);
-            System.arraycopy(raw_data, 0, data, 0, raw_data.length);
-
-            /**
-             * EnumSort (Parallel) extended from RecursiveAction
+             * EnumSort (Parallel) implemented with RecursiveAction and ForkJoinPool
              */
             double beforeEsp = stopwatch.elapsedTime();
             int[] resultEsp = new int[4000];
-            final ForkJoinPool forkJoinPool1 = new ForkJoinPool(Runtime.getRuntime().availableProcessors() - 1);
-            forkJoinPool1.invoke(new EnumSortParallelTask(data, resultEsp, 0, data.length - 1, -1));
+            final ForkJoinPool forkJoinPoolEsp = new ForkJoinPool(Runtime.getRuntime().availableProcessors() - 1);
+            forkJoinPoolEsp.invoke(new EnumSortParallelTask(data, resultEsp, 0, data.length - 1, -1));
             double afterEsp = stopwatch.elapsedTime();
             assertSort(resultEsp);
+            outputToTxt(6, resultEsp);
             System.arraycopy(raw_data, 0, data, 0, raw_data.length);
 
 
@@ -134,6 +146,7 @@ public class MainClass {
             System.out.println("EnumSort takes " + String.format("%.4f", (afterEs - beforeEs)) + "s");
             System.out.println("MergeSort takes " + String.format("%.4f", (afterMs - beforeMs)) + "s");
             System.out.println("QuickSortParallel takes " + String.format("%.4f", (afterQsp - beforeQsp)) + "s");
+            System.out.println("QuickSortParallel2 takes " + String.format("%.4f", (afterQsp2 - beforeQsp2)) + "s");
             System.out.println("MergeSortParallel takes " + String.format("%.4f", (afterMsp - beforeMsp)) + "s");
             System.out.println("MergeSortParallel2 takes " + String.format("%.4f", (afterMsp2 - beforeMsp2)) + "s");
             System.out.println("EnumSortParallel takes " + String.format("%.4f", (afterEsp - beforeEsp)) + "s");
