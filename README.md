@@ -16,6 +16,6 @@ Here I implement Quicksort and MergeSort with different APIs.
 ---
 ### How to compile & run?
 - Since the project is build by Intellij IDEA, you can import it into your IJ or open it in IJ, and click `make project` or `run`. 
-- I provide `ReadMe.txt` to describe the compiling and running command of the project.You can input `$bash ReadMe.txt`
+- I provide `ReadMe.txt` to describe the compiling and running command of the project.You can input `$ bash run.sh`
 
 ---
