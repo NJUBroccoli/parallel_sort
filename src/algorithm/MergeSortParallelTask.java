@@ -2,19 +2,16 @@ package algorithm;
 
 public class MergeSortParallelTask implements Runnable{
     private int[] data;
-    private int threshold = 1500;
     private int begin = 0;
     private int end = 0;
+
+    private static int numOfProcessors = Runtime.getRuntime().availableProcessors();
+    private static int count = 0;
 
     public MergeSortParallelTask(int[] arr, int begin, int end){
         this.data = arr;
         this.begin = begin;
         this.end = end;
-    }
-
-    public MergeSortParallelTask(int[] arr, int begin, int end, int threshold){
-        this(arr, begin, end);
-        this.threshold = threshold;
     }
 
     @Override
@@ -26,9 +23,10 @@ public class MergeSortParallelTask implements Runnable{
         if (left >= right)
             return;
         int mid = (left + right) / 2;
-        if (mid - left > threshold) {
-            Thread leftThread = new Thread(new MergeSortParallelTask(arr, left, mid, threshold));
-            Thread rightThread = new Thread(new MergeSortParallelTask(arr, mid + 1, right, threshold));
+        if (count < numOfProcessors) {
+            count++;
+            Thread leftThread = new Thread(new MergeSortParallelTask(arr, left, mid));
+            Thread rightThread = new Thread(new MergeSortParallelTask(arr, mid + 1, right));
             leftThread.start();
             rightThread.start();
             try {

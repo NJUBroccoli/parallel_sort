@@ -16,7 +16,7 @@ import java.util.concurrent.Future;
 public class MainClass {
 
     private final static String DIR = System.getProperty("user.dir");
-    private final static int MAX_DATA_NUM = 4000;
+    private final static int MAX_DATA_NUM = 40000;
 
     public static void main(String[] args){
         try {
@@ -73,7 +73,7 @@ public class MainClass {
             double beforeQsp = stopwatch.elapsedTime();
             List<Future> futures = new Vector<>();
             ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-            QuickSortParallelTask mainQspTask = new QuickSortParallelTask(data, 0, data.length - 1, executorService, futures, 1000);
+            QuickSortParallelTask mainQspTask = new QuickSortParallelTask(data, 0, data.length - 1, executorService, futures);
             futures.add(executorService.submit(mainQspTask));
             while (!futures.isEmpty()){
                 Future topFuture = futures.remove(0);
@@ -94,7 +94,7 @@ public class MainClass {
              */
             double beforeQsp2 = stopwatch.elapsedTime();
             final ForkJoinPool forkJoinPoolQsp = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
-            forkJoinPoolQsp.invoke(new QuickSortParallelTask2(data, 0, data.length - 1, 3000));
+            forkJoinPoolQsp.invoke(new QuickSortParallelTask2(data, 0, data.length - 1));
             double afterQsp2 = stopwatch.elapsedTime();
             assertSort(data);
             outputToTxt(4, data);
@@ -104,7 +104,7 @@ public class MainClass {
              * MergeSort (Parallel) implemented with naive Thread start/join
              */
             double beforeMsp = stopwatch.elapsedTime();
-            Thread mspThread = new Thread(new MergeSortParallelTask(data, 0, data.length - 1, 500));
+            Thread mspThread = new Thread(new MergeSortParallelTask(data, 0, data.length - 1));
             mspThread.start();
             try{
                 mspThread.join();
@@ -130,8 +130,8 @@ public class MainClass {
              * EnumSort (Parallel) implemented with RecursiveAction and ForkJoinPool
              */
             double beforeEsp = stopwatch.elapsedTime();
-            int[] resultEsp = new int[4000];
-            final ForkJoinPool forkJoinPoolEsp = new ForkJoinPool(Runtime.getRuntime().availableProcessors() - 1);
+            int[] resultEsp = new int[40000];
+            final ForkJoinPool forkJoinPoolEsp = new ForkJoinPool(Runtime.getRuntime().availableProcessors());
             forkJoinPoolEsp.invoke(new EnumSortParallelTask(data, resultEsp, 0, data.length - 1, -1));
             double afterEsp = stopwatch.elapsedTime();
             assertSort(resultEsp);

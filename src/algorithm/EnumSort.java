@@ -6,7 +6,7 @@ public class EnumSort {
 
     public EnumSort(int[] arr){
         data = arr;
-        this.result = new int[4000];
+        this.result = new int[40000];
     }
 
     public void sort(){

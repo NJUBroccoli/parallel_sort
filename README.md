@@ -3,7 +3,7 @@
 
 ---
 ### Inputs & Outputs
-&emsp;&emsp;The input dataset is stored in `random.txt` with 3000 unordered integers ranging from -10000 to 10000, seperated by blank space. The six different algorithms seperately prints their outputs to `order*.txt` where `*` ranges from 1 to 6.
+&emsp;&emsp;The input dataset is stored in `random.txt` with 30000 unordered integers ranging from -50000 to 50000, seperated by blank space. The six different algorithms seperately prints their outputs to `order*.txt` where `*` ranges from 1 to 6.
 
 ---
 ### The APIs used when implementing multi-thread version

@@ -6,23 +6,23 @@ public class MergeSortParallelTask2 extends RecursiveAction {
     private int[] data;
     private int begin = 0;
     private int end = 0;
-    private int threshold = 1000;
+
+    private static int numOfProcessors = Runtime.getRuntime().availableProcessors();
+    private static int count = 0;
+
     public MergeSortParallelTask2(int[] arr, int begin, int end){
         this.data = arr;
         this.begin = begin;
         this.end = end;
     }
-    public MergeSortParallelTask2(int[] arr, int begin, int end, int threshold){
-        this(arr, begin, end);
-        this.threshold = threshold;
-    }
 
     @Override
     public void compute(){
         if (begin < end) {
-            if (begin - end <= threshold) { // Sequential implementation
+            if (count > numOfProcessors) {
                 mergesort(data, begin, end);
-            } else { // Parallel implementation
+            } else {
+                count ++;
                 final int middle = (begin + end) / 2;
                 final MergeSortParallelTask2 leftTask =
                         new MergeSortParallelTask2(data, begin, middle);

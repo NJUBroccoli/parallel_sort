@@ -6,9 +6,11 @@ import java.util.concurrent.RecursiveAction;
 
 public class QuickSortParallelTask2 extends RecursiveAction {
     private int[] data;
-    private int threshold = 1500;
     private int begin = 0;
     private int end = 0;
+
+    private static int numOfProcessors = Runtime.getRuntime().availableProcessors();
+    private static int count = 0;
 
     public QuickSortParallelTask2(int[] arr, int begin, int end){
         this.data = arr;
@@ -16,19 +18,22 @@ public class QuickSortParallelTask2 extends RecursiveAction {
         this.end = end;
     }
 
-    public QuickSortParallelTask2(int[] arr, int begin ,int end, int threshold){
-        this(arr, begin, end);
-        this.threshold = threshold;
-    }
-
     @Override
     public void compute(){
-        sort(data, begin, end);
+        parallelSort(data, begin, end);
     }
 
     private void sort(int[] arr, int left, int right){
+        if (left < right){
+            int p = partition(arr, left, right);
+            sort(arr, left, p - 1);
+            sort(arr, p + 1, right);
+        }
+    }
+
+    private int partition(int[] arr, int left, int right){
         if (left >= right)
-            return;
+            return -1;
         int pivot = left;
         int key = arr[pivot];
         int l = left;
@@ -48,12 +53,19 @@ public class QuickSortParallelTask2 extends RecursiveAction {
             }
         }
         arr[l] = key;
+        return l;
+    }
+
+    private void parallelSort(int[] arr, int left, int right){
 
         List<QuickSortParallelTask2> futures = new Vector<>();
+        int l = partition(arr, left, right);
 
         if (l - left > 1){
-            if (l - left > threshold){
-                QuickSortParallelTask2 leftTask = new QuickSortParallelTask2(arr, left, l - 1, threshold);
+            if (count < numOfProcessors){
+                count++;
+                //System.out.println("l: " + l + "\tleft: " + left);
+                QuickSortParallelTask2 leftTask = new QuickSortParallelTask2(arr, left, l - 1);
                 futures.add(leftTask);
             }
             else{
@@ -61,14 +73,17 @@ public class QuickSortParallelTask2 extends RecursiveAction {
             }
         }
         if (right - l > 1){
-            if (right - l > threshold){
-                QuickSortParallelTask2 rightTask = new QuickSortParallelTask2(arr, l + 1, right, threshold);
+            if (count < numOfProcessors){
+                count++;
+                //System.out.println("right: " + right + "\tl: " + l);
+                QuickSortParallelTask2 rightTask = new QuickSortParallelTask2(arr, l + 1, right);
                 futures.add(rightTask);
             }
             else{
                 sort(arr, l + 1, right);
             }
         }
-        invokeAll(futures);
+        if (!futures.isEmpty())
+            invokeAll(futures);
     }
 }

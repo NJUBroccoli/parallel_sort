@@ -5,10 +5,8 @@ import java.util.Random;
 public class Quicksort {
 
     private int [] data;
-    private Random random;
     public Quicksort(int [] arr){
         data = arr;
-        random = new Random();
     }
 
     private int partition(int left, int right){
