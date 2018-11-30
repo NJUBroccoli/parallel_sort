@@ -13,10 +13,11 @@ public class EnumSort {
         for (int i = 0; i < data.length; i++){
             int k = 0;
             for (int j = 0; j < data.length; j++){
-                if (data[i] > data[j])
+                if (data[i] > data[j] || (data[i] == data[j] && i > j))
                     k++;
             }
             result[k] = data[i];
         }
     }
+
 }

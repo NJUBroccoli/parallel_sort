@@ -24,7 +24,7 @@ public class MergeSortParallelTask implements Runnable{
             return;
         int mid = (left + right) / 2;
         if (count < numOfProcessors) {
-            count++;
+            count += 2;
             Thread leftThread = new Thread(new MergeSortParallelTask(arr, left, mid));
             Thread rightThread = new Thread(new MergeSortParallelTask(arr, mid + 1, right));
             leftThread.start();

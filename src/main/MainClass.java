@@ -138,7 +138,6 @@ public class MainClass {
             outputToTxt(6, resultEsp);
             System.arraycopy(raw_data, 0, data, 0, raw_data.length);
 
-
             /**
              * Time consumed
              */
